@@ -1,7 +1,7 @@
 module Main where
 
 part1 :: String -> Int
-part1 = numberOfIncreases . map (read) .lines
+part1 = numberOfIncreases . map (read) . lines
   where
     numberOfIncreases :: [Int] -> Int
     numberOfIncreases (xs) | length xs < 2 = 0
