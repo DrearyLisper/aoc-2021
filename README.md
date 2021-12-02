@@ -2,7 +2,7 @@
 
 See https://adventofcode.com/2021 for problems.
 
-Use ```:l main.hs``` in ghci to laod solution for particular day.
+Use ```:l main.hs``` in ghci to load solution for particular day.
 
 ## Day 01: Sonar Sweep
 
