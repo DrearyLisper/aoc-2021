@@ -9,40 +9,46 @@ convert (x : xs) = ((read [x]) :: Int) + 2 * convert xs
 part1 :: String -> Int
 part1 = answer . foldl step (Map.fromList [])  . map (zip [0..]) . lines
   where
-    --answer :: Map.Map (Char, Int) Int -> Int
-    answer m = mostPopular m * leastPopular m
+    answer :: Map.Map (Int, Char) Int -> Int
+    answer m = mostPopular * leastPopular
       where
-        mostPopular = convert . reverse . queryMap (>)
-        leastPopular = convert . reverse . queryMap (<)
+        mostPopular :: Int
+        mostPopular = convert $ reverse $ queryMap (<)
 
-        size :: Map.Map (Int, Char) Int -> Int
-        size m = fst $ head $ reverse $ Map.keys m
+        leastPopular :: Int
+        leastPopular = convert $ reverse $ queryMap (>)
 
-        queryMap f m = map (popular f m) [0..size m]
+        size :: Int
+        size = fst $ head $ reverse $ Map.keys m
 
-        popular :: (Int -> Int -> Bool) -> Map.Map (Int, Char) Int -> Int -> Char
-        popular f m index = if ((Just f) <*> (Map.lookup (index, '0') m) <*> (Map.lookup (index, '1') m)) == Just True
-            then '1'
-            else '0'
+        queryMap :: (Int -> Int -> Bool) -> [Char]
+        queryMap f = map (popular f) [0..size]
+
+        popular :: (Int -> Int -> Bool) -> Int -> Char
+        popular f index | ((Just f) <*> (Map.lookup (index, '0') m) <*> (Map.lookup (index, '1') m)) == Just True = '1'
+                        | otherwise = '0'
 
     step :: Map.Map (Int, Char) Int-> [(Int, Char)] -> Map.Map (Int, Char) Int
-    step map bits = foldl addToMap map bits
+    step m bits = foldl addToMap m bits
       where
         alterF :: Maybe Int -> Maybe Int
         alterF (Just k) = Just (k+1)
         alterF Nothing = Just 1
 
         addToMap :: Map.Map (Int, Char) Int -> (Int, Char) -> Map.Map (Int, Char) Int
-        addToMap map bit = Map.alter alterF bit map
+        addToMap m bit = Map.alter alterF bit m
 
-
-part2 c = oxygen c * co2 c
+part2 :: String -> Int
+part2 c = oxygen * co2
   where
-    oxygen = convert . reverse . sieve (>) 0 . numbers
-    co2 = convert . reverse . sieve (<=) 0 . numbers
+    numbers :: [[(Int, Char)]]
+    numbers = map (zip [0..]) $ lines c
 
-    numbers :: String -> [[(Int, Char)]]
-    numbers = map (zip [0..]) . lines
+    oxygen :: Int
+    oxygen = convert $ reverse $ sieve (>) 0 $ numbers
+
+    co2 :: Int
+    co2 = convert $ reverse $ sieve (<=) 0 $ numbers
 
     sieve :: (Int -> Int -> Bool) -> Int -> [[(Int, Char)]] -> [Char]
     sieve f i n | length n == 1 = map snd $ head n
@@ -51,19 +57,18 @@ part2 c = oxygen c * co2 c
                       bit = popular f i $ foldl (step i) (Map.fromList[]) n
 
     popular :: (Int -> Int -> Bool) -> Int -> Map.Map (Int, Char) Int -> Char
-    popular f index m = if ((Just f) <*> (Map.lookup (index, '0') m) <*> (Map.lookup (index, '1') m)) == Just True
-        then '0'
-        else '1'
+    popular f index m | ((Just f) <*> (Map.lookup (index, '0') m) <*> (Map.lookup (index, '1') m)) == Just True = '0'
+                      | otherwise = '1'
 
     step :: Int -> Map.Map (Int, Char) Int-> [(Int, Char)] -> Map.Map (Int, Char) Int
-    step i m bits = addToMap m (bits !! i)
+    step i m bits = addToMap (bits !! i)
       where
         alterF :: Maybe Int -> Maybe Int
         alterF (Just k) = Just (k+1)
         alterF Nothing = Just 1
 
-        addToMap :: Map.Map (Int, Char) Int -> (Int, Char) -> Map.Map (Int, Char) Int
-        addToMap m bit = Map.alter alterF bit m
+        addToMap :: (Int, Char) -> Map.Map (Int, Char) Int
+        addToMap bit = Map.alter alterF bit m
 
 
 
@@ -73,4 +78,5 @@ solve filename = do
   print $ part1 c
   print $ part2 c
 
+main :: IO ()
 main = solve "input.txt"
