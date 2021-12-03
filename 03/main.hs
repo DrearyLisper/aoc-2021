@@ -10,13 +10,13 @@ part1 :: String -> Int
 part1 = answer . foldl step (Map.fromList [])  . map (zip [0..]) . lines
   where
     answer :: Map.Map (Int, Char) Int -> Int
-    answer m = mostPopular * leastPopular
+    answer m = gamma * epsilon
       where
-        mostPopular :: Int
-        mostPopular = convert $ reverse $ queryMap (<)
+        gamma :: Int
+        gamma = convert $ reverse $ queryMap (<)
 
-        leastPopular :: Int
-        leastPopular = convert $ reverse $ queryMap (>)
+        epsilon :: Int
+        epsilon = convert $ reverse $ queryMap (>)
 
         size :: Int
         size = fst $ head $ reverse $ Map.keys m
