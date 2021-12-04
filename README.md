@@ -279,7 +279,6 @@ The submarine has a bingo subsystem to help passengers (currently, you and the g
 18  8 23 26 20
 22 11 13  6  5
  2  0 12  3  7
-
 ```
 
 After the first five numbers are drawn (7, 4, 9, 5, and 11), there are no winners, but the boards are marked as follows (shown here adjacent to each other to save space):
@@ -329,7 +328,7 @@ In the above example, the second board is the last to win, which happens after 1
 Figure out which board will win last. Once it wins, what would its final score be?
 
 ``` haskell
-*Main Data.List> main 
+*Main> main 
 33462
 30070
 ```
