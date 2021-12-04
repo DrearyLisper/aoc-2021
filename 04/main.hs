@@ -50,8 +50,14 @@ part1 = play . game
         play' (number:numbers) boards lastNumber | any doesBoardWin boards = lastNumber * sumUnmarked boards
                                                  | otherwise = play' numbers (map (\board -> markOnBoard board number) boards) number
 
+        foldBoard :: Board -> Int
+        foldBoard board = let
+          winner = doesBoardWin board
+          in
+          foldlBoard (\s (i, f) -> s + if not f && winner then i else 0) 0 board
+
         sumUnmarked :: [Board] -> Int
-        sumUnmarked boards = sum $ map (\board -> let winner = doesBoardWin board in foldlBoard (\s (i, f) -> s + if not f && winner then i else 0) 0 board) boards
+        sumUnmarked boards = sum $ map foldBoard boards
 
 part2 :: String -> Int
 part2 = play . game
@@ -66,8 +72,11 @@ part2 = play . game
         play' (number:numbers) boards lastNumber lastWinners | all doesBoardWin boards = lastNumber * sumUnmarked boards (map not (zipWith (&&) lastWinners (map doesBoardWin boards)))
                                                              | otherwise = play' numbers (map (\board -> markOnBoard board number) boards) number (map doesBoardWin boards)
 
+        foldBoard :: (Board, Bool) -> Int
+        foldBoard (board, ind) = foldlBoard (\s (i, f) -> s + if not f && ind then i else 0) 0 board
+
         sumUnmarked :: [Board] -> [Bool] -> Int
-        sumUnmarked boards inds = sum $ map (\(board, ind) -> foldlBoard (\s (i, f) -> s + if not f && ind then i else 0) 0 board) (zip boards inds)
+        sumUnmarked boards inds = sum $ map foldBoard (zip boards inds)
 
 
 solve :: String -> IO ()
