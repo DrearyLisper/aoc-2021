@@ -1,5 +1,7 @@
 # Solving AoC 2021 problems in Haskell
 
+![Logo](https://raw.githubusercontent.com/DrearyLisper/aoc-2021/master/images/logo.png)
+
 See https://adventofcode.com/2021 for problems.
 
 Use ```:l main.hs``` in ghci to load solution for particular day.
