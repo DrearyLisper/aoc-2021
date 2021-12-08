@@ -75,3 +75,13 @@ Use ```:l main.hs``` in ghci to load solution for particular day.
 333755
 94017638
 ```
+
+## Day 08: Seven Segment Search
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/08)
+
+``` haskell
+*Main> main 
+294
+Just 973292
+```
