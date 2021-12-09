@@ -85,11 +85,11 @@ part2 c = fmap sum $ sequence $ map buildAndDecode examples
                             | length signal == 5 = decodeLength5 signal m
                             | otherwise = Nothing
 
-    easy :: Example -> Map.Map Int Number
-    easy (Example input _) = Map.fromList $ map (\((Just i), s) -> (i, s)) $ filter (isJust.fst) $ zip (map byLength input) input
-
     hard :: Example -> Map.Map Int Number -> Map.Map Int Number
     hard (Example input _) m = Map.fromList $ map (\((Just i), s) -> (i, s)) $ filter (isJust.fst) $ zip (map (byMap m) input) input
+
+    easy :: Example -> Map.Map Int Number
+    easy (Example input _) = Map.fromList $ map (\((Just i), s) -> (i, s)) $ filter (isJust.fst) $ zip (map byLength input) input
 
 
 

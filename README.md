@@ -85,3 +85,14 @@ Use ```:l main.hs``` in ghci to load solution for particular day.
 294
 Just 973292
 ```
+
+## Day 09: Smoke Basin
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/09)
+
+``` haskell
+*Main> main 
+502
+1330560
+```
+
