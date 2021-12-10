@@ -96,3 +96,13 @@ Just 973292
 1330560
 ```
 
+## Day 10: Smoke Basin
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/10)
+
+``` haskell
+*Main> main 
+193275
+2429644557
+```
+
