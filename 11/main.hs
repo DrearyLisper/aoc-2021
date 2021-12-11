@@ -4,16 +4,10 @@ import qualified Data.Array as Array
 
 data Grid = Grid (Array.Array (Int, Int) Int) deriving Show
 
-chunks :: Int -> [a] -> [[a]]
-chunks _ [] = []
-chunks n l | n > 0 = (take n l) : (chunks n (drop n l))
-           | otherwise = error "Negative or zero n"
-
-newGrid :: Grid
-newGrid = Grid (Array.array ((0, 0), (9, 9)) [((i,j), 0) | i <- [0..9], j <- [0..9]] )
-
 parseInput :: String -> Grid
-parseInput c = Grid (Array.array ((0, 0), (height-1,width-1)) [((i,j), read [e])| (i, line) <- zip [0..] (lines c), (j, e) <- zip [0..] line])
+parseInput c = Grid (Array.array
+                     ((0, 0), (height-1,width-1))
+                     [((i,j), read [e])| (i, line) <- zip [0..] (lines c), (j, e) <- zip [0..] line])
   where
     height = 10
     width = 10
@@ -24,7 +18,6 @@ candidates (i, j) = [(i+i', j+j') | i' <- [-1..1], j' <- [-1..1],
                                     i+i' >= 0, j+j' >= 0,
                                     i+i' < 10, j+j' < 10,
                                     (abs i') + (abs j') > 0]
-
 
 addOne :: Grid -> (Int, Int) -> Grid
 addOne (Grid grid) point = Grid (grid Array.// [(point, (grid Array.! point) + 1)])
@@ -38,6 +31,10 @@ value (Grid grid) point = grid Array.! point
 setValue :: Grid -> (Int, Int) -> Int -> Grid
 setValue (Grid grid) point v = Grid (grid Array.// [(point, v)])
 
+bounds :: [(Int, Int)]
+bounds = [(i, j) | i <- [0..9], j <- [0..9]]
+
+
 update :: Grid -> (Int, Int) -> Grid
 update grid point | (value grid point) == -1 = grid
                   | otherwise = addOne grid point
@@ -49,9 +46,6 @@ cell (grid, hadFlash) point | (value grid point) == 9 = (setMinusOne (foldl upda
 clamp :: (Grid, Bool) -> (Int, Int) -> (Grid, Bool)
 clamp (grid, hadFlash) point | (value grid point) >= 9 = (setValue grid point 9, True)
                              | otherwise = (grid, hadFlash)
-
-bounds :: [(Int, Int)]
-bounds = [(i, j) | i <- [0..9], j <- [0..9]]
 
 flash :: (Grid, Bool) -> (Grid, Bool)
 flash (grid, _) = foldl clamp (foldl cell (grid, False) bounds) bounds
