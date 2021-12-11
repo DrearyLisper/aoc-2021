@@ -106,3 +106,13 @@ Just 973292
 2429644557
 ```
 
+## Day 11: Dumbo Octopus
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/11)
+
+``` haskell
+*Main> main 
+1705
+265
+```
+
