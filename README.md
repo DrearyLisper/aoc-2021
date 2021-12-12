@@ -116,3 +116,13 @@ Just 973292
 265
 ```
 
+## Day 12: Passage Pathing
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/12)
+
+``` haskell
+*Main> main 
+4241
+122134
+```
+
