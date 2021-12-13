@@ -4,25 +4,21 @@ import Data.List
 import qualified Data.Char as Char
 import qualified Data.Map as Map
 
-data Cave = Cave { name :: String, isBig :: Bool} deriving (Show, Ord, Eq)
-
-data CaveMap = CaveMap (Map.Map Cave [Cave]) deriving Show
-
 wordsWhen     :: (Char -> Bool) -> String -> [String]
 wordsWhen p s =  case dropWhile p s of
                       "" -> []
                       s' -> w : wordsWhen p s''
                             where (w, s'') = break p s'
 
+
+data Cave = Cave { name :: String, isBig :: Bool} deriving (Show, Ord, Eq)
+data CaveMap = CaveMap (Map.Map Cave [Cave]) deriving Show
+
 newCaveMap :: CaveMap
 newCaveMap = CaveMap (Map.fromList [])
 
 parseCave :: String -> Cave
 parseCave caveName = Cave caveName (Char.isUpper $ head caveName)
-
-neighbours :: CaveMap -> Cave -> [Cave]
-neighbours (CaveMap caveMap) cave = case Map.lookup cave caveMap of Nothing -> error "Absent cave in caveMap"
-                                                                    (Just caves) -> caves
 
 parseInput :: String -> CaveMap
 parseInput c = foldl foldlF newCaveMap pairs
@@ -31,12 +27,16 @@ parseInput c = foldl foldlF newCaveMap pairs
     pairs = map (map parseCave) $ map (wordsWhen (=='-')) (lines c)
 
     foldlF :: CaveMap -> [Cave] -> CaveMap
-    foldlF (CaveMap caveMap) caves = CaveMap (Map.alter (alterF (caves !! 0)) (caves !! 1) (Map.alter (alterF (caves !! 1)) (caves !! 0) caveMap))
+    foldlF (CaveMap caveMap) caves = CaveMap (Map.alter (alterF (caves !! 0)) (caves !! 1)
+                                              (Map.alter (alterF (caves !! 1)) (caves !! 0) caveMap))
       where
         alterF :: Cave -> Maybe [Cave] -> Maybe [Cave]
         alterF cave Nothing = Just [cave]
         alterF cave (Just foundCaves) = Just (cave:foundCaves)
 
+neighbours :: CaveMap -> Cave -> [Cave]
+neighbours (CaveMap caveMap) cave = case Map.lookup cave caveMap of Nothing -> error "Absent cave in caveMap"
+                                                                    (Just caves) -> caves
 part1 :: String -> Int
 part1 c = length $ dfs [] (parseCave "start")
   where
