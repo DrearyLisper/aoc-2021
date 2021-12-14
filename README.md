@@ -141,3 +141,13 @@ Just 973292
 ".***..**..****..***.****..**..*.....**."
 ```
 
+## Day 14: Extended Polymerization
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/14)
+
+``` haskell
+*Main> main 
+3406
+3941782230241
+```
+
