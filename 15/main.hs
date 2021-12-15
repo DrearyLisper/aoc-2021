@@ -14,7 +14,8 @@ data Grid e = Grid {height :: Int,  width :: Int, gridImpl :: (Array.Array Point
 parseInput :: String -> Grid Int
 parseInput c = Grid height
                     width
-                    (Array.array ((0, 0), (height-1, width-1)) [((i, j), read [e]) | (row, i) <- zip (lines c) [0..], (e, j) <- zip row [0..]])
+                    (Array.array ((0, 0), (height-1, width-1))
+                     [((i, j), read [e]) | (row, i) <- zip (lines c) [0..], (e, j) <- zip row [0..]])
   where
     height = length $ lines c
     width = length $ head $ lines c
@@ -22,12 +23,12 @@ parseInput c = Grid height
 parseInput2 :: String -> Grid Int
 parseInput2 c = Grid (5*height)
                      (5*width)
-                     (Array.array ((0, 0), (5*height-1, 5*width-1)) [((si * height + i, sj * width  + j), let v = (read [e] + si + sj) in if v >= 10 then 1 + (v `mod` 10) else v)
-                                                                | si <- [0..4],
-                                                                  sj <- [0..4],
-                                                                  (row, i) <- zip (lines c) [0..],
-                                                                  (e, j) <- zip row [0..]]
-                                                                  )
+                     (Array.array ((0, 0), (5*height-1, 5*width-1))
+                      [((si * height + i, sj * width  + j), let v = (read [e] + si + sj) in if v >= 10 then 1 + (v `mod` 10) else v)
+                       | si <- [0..4],
+                         sj <- [0..4],
+                         (row, i) <- zip (lines c) [0..],
+                         (e, j) <- zip row [0..]])
   where
     height = length $ lines c
     width = length $ head $ lines c
@@ -59,7 +60,10 @@ bfs grid seen queue | Heap.size queue == 0 || point == (height grid - 1, width g
                         candidates = neighbours grid seen point
 
                         newSeen = Set.union seen (Set.fromList candidates)
-                        newQueue = (foldl (\h i -> Heap.insert i h) queueTail (zip (map ((+pointValue).(getValue grid)) candidates) candidates))
+                        newQueue = foldl
+                                      (\h i -> Heap.insert i h)
+                                      queueTail
+                                      (zip (map ((+pointValue).(getValue grid)) candidates) candidates)
 
 
 part1 :: String -> Int
