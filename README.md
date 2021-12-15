@@ -151,3 +151,13 @@ Just 973292
 3941782230241
 ```
 
+## Day 15: Chiton
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/14)
+
+``` haskell
+*Main> main 
+472
+2851
+(4.79 secs, 4,591,589,160 bytes)
+```
