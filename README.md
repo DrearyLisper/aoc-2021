@@ -153,7 +153,7 @@ Just 973292
 
 ## Day 15: Chiton
 
-[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/14)
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/15)
 
 ``` haskell
 *Main> main 
