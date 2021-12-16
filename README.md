@@ -162,3 +162,14 @@ Just 973292
 (4.79 secs, 4,591,589,160 bytes)
 ```
 
+## Day 16: Packet Decoder
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/16)
+
+``` haskell
+*Main> main 
+854
+186189840660
+(0.04 secs, 30,072,016 bytes)
+```
+
