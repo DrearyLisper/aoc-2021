@@ -173,3 +173,14 @@ Just 973292
 (0.04 secs, 30,072,016 bytes)
 ```
 
+## Day 17: Trick Shot
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/17)
+
+``` haskell
+*Main> main 
+4560
+3344
+(4.15 secs, 3,979,004,480 bytes)
+```
+
