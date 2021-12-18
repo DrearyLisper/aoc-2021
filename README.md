@@ -184,3 +184,14 @@ Just 973292
 (4.15 secs, 3,979,004,480 bytes)
 ```
 
+## Day 18: Trick Shot
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/18)
+
+``` haskell
+*Main> main 
+3691
+4756
+(3.06 secs, 3,557,741,448 bytes)
+```
+
