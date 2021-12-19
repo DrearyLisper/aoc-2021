@@ -2,16 +2,16 @@
 module Main where
 
 import Data.List
-import Debug.Trace
-
-type Point = (Int, Int, Int)
-newtype Scanner = Scanner [Point] deriving Show
 
 wordsWhen     :: (Char -> Bool) -> String -> [String]
 wordsWhen p s =  case dropWhile p s of
                       "" -> []
                       s' -> w : wordsWhen p s''
                             where (w, s'') = break p s'
+
+
+type Point = (Int, Int, Int)
+newtype Scanner = Scanner [Point] deriving Show
 
 parseInput :: String -> [Scanner]
 parseInput c = parse [] $ lines c
@@ -63,20 +63,21 @@ findNode node mappings = case lookup node mappings of
 
 
 part1 :: String -> Int
-part1 c = length $ group $ sort $ rotate offsets
+part1 c = length $ group $ sort rotate
   where
-    offsets = fst $ dfs [] (0, (id, (0, 0, 0)))
-
     scanners :: [Scanner]
     scanners = parseInput c
 
-    rotate :: [(Int, (Point -> Point, Point))] -> [Point]
-    rotate mappings = concatMap
-                      (\(node, Scanner a) -> let (mapping, offset) = findNode node mappings in map (\o -> (mapping o) <+> offset) a)
-                      $ zip [0..] scanners
+    offsets = fst $ dfs [] (0, (id, (0, 0, 0)))
+
+    rotate :: [Point]
+    rotate = concatMap
+            (\(node, Scanner a) -> let (mapping, offset) = findNode node offsets in map (\o -> mapping o <+> offset) a)
+            $ zip [0..] scanners
 
     pairs :: (Point->Point) -> Scanner -> Scanner -> [(Int, Int, Point)]
-    pairs mapping (Scanner a) (Scanner b) = [(p, t, mapping i <-> pivot p (transform t (mapping j))) | i <- a, j <- b, p <- [0..5], t <- [0..7]]
+    pairs mapping (Scanner a) (Scanner b) = [(p, t, mapping i <-> pivot p (transform t (mapping j)))
+                                            | i <- a, j <- b, p <- [0..5], t <- [0..7]]
 
     connection :: (Point->Point) -> Int -> Int -> [Connection]
     connection mapping i j = let
@@ -87,15 +88,17 @@ part1 c = length $ group $ sort $ rotate offsets
     connections from mapping = concat $ [connection mapping from j | j <- [0..length scanners - 1], from /= j]
 
 
-    dfs :: [(Int, (Point -> Point, Point))] -> (Int, (Point -> Point, Point)) -> ([(Int, (Point -> Point, Point))], [(Int, (Point -> Point, Point))])
-    dfs history (node, (mapping, offset)) | any (\(a, _) -> a == node) history = ([], history)
-                                          | otherwise = foldl (\(found, nextHistory) (Connection _ to (p, t, o))
-                                                             -> let
-                                                                  (new, nextHistory') = dfs nextHistory (to, (pivot p.transform t.mapping, o <+> offset))
-                                                                in (found ++ new, nextHistory')
-                                                        )
-                                                        ([(node, (mapping, offset))], (node, (mapping, offset)):history)
-                                                        (connections node mapping)
+    dfs :: [(Int, (Point -> Point, Point))]
+      -> (Int, (Point -> Point, Point))
+      -> ([(Int, (Point -> Point, Point))], [(Int, (Point -> Point, Point))])
+    dfs history (node, (mapping, offset))
+      | any (\(a, _) -> a == node) history = ([], history)
+      | otherwise = foldl (\(found, nextHistory) (Connection _ to (p, t, o))
+                          -> let
+                              (new, nextHistory') = dfs nextHistory (to, (pivot p.transform t.mapping, o <+> offset))
+                             in (found ++ new, nextHistory'))
+                          ([(node, (mapping, offset))], (node, (mapping, offset)):history)
+                          (connections node mapping)
 
 part2 :: String -> Int
 part2 c = maximum $ [a <--> b | a <- offsets, b <- offsets]
@@ -107,7 +110,8 @@ part2 c = maximum $ [a <--> b | a <- offsets, b <- offsets]
     scanners = parseInput c
 
     pairs :: (Point->Point) -> Scanner -> Scanner -> [(Int, Int, Point)]
-    pairs mapping (Scanner a) (Scanner b) = [(p, t, mapping i <-> pivot p (transform t (mapping j))) | i <- a, j <- b, p <- [0..5], t <- [0..7]]
+    pairs mapping (Scanner a) (Scanner b) = [(p, t, mapping i <-> pivot p (transform t (mapping j)))
+                                            | i <- a, j <- b, p <- [0..5], t <- [0..7]]
 
     connection :: (Point->Point) -> Int -> Int -> [Connection]
     connection mapping i j = let
@@ -117,15 +121,17 @@ part2 c = maximum $ [a <--> b | a <- offsets, b <- offsets]
     connections :: Int -> (Point -> Point) -> [Connection]
     connections from mapping = concat $ [connection mapping from j | j <- [0..length scanners - 1], from /= j]
 
-    dfs :: [(Int, (Point -> Point, Point))] -> (Int, (Point -> Point, Point)) -> ([(Int, (Point -> Point, Point))], [(Int, (Point -> Point, Point))])
-    dfs history (node, (mapping, offset)) | any (\(a, _) -> a == node) history = ([], history)
-                                          | otherwise = foldl (\(found, nextHistory) (Connection _ to (p, t, o))
-                                                             -> let
-                                                                  (new, nextHistory') = dfs nextHistory (to, (pivot p.transform t.mapping, o <+> offset))
-                                                                in (found ++ new, nextHistory')
-                                                        )
-                                                        ([(node, (mapping, offset))], (node, (mapping, offset)):history)
-                                                        (connections node mapping)
+    dfs :: [(Int, (Point -> Point, Point))]
+      -> (Int, (Point -> Point, Point))
+      -> ([(Int, (Point -> Point, Point))], [(Int, (Point -> Point, Point))])
+    dfs history (node, (mapping, offset))
+      | any (\(a, _) -> a == node) history = ([], history)
+      | otherwise = foldl (\(found, nextHistory) (Connection _ to (p, t, o))
+                          -> let
+                              (new, nextHistory') = dfs nextHistory (to, (pivot p.transform t.mapping, o <+> offset))
+                             in (found ++ new, nextHistory'))
+                          ([(node, (mapping, offset))], (node, (mapping, offset)):history)
+                          (connections node mapping)
 
 solve filename = do
   c <- readFile filename
