@@ -195,3 +195,17 @@ Just 973292
 (3.06 secs, 3,557,741,448 bytes)
 ```
 
+## Day 19: Beacon Scanner
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/19)
+
+``` haskell
+> ghc -O2 main.hs -o main
+[1 of 1] Compiling Main             ( main.hs, main.o )
+Linking main ...
+> time ./main 
+308
+12124
+./main  21.89s user 0.28s system 99% cpu 22.374 total
+```
+
