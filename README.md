@@ -1,3 +1,5 @@
+[![Haskell CI](https://github.com/DrearyLisper/aoc-2021/actions/workflows/haskell.yml/badge.svg)](https://github.com/DrearyLisper/aoc-2021/actions/workflows/haskell.yml)
+
 # Solving AoC 2021 problems in Haskell
 
 ![Logo](https://raw.githubusercontent.com/DrearyLisper/aoc-2021/master/images/logo.png)
