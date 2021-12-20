@@ -2,9 +2,6 @@
 
 module Main where
 
-import Debug.Trace
-import GHC (pragBrackets)
-
 data Packet = Value Int Int Int | Operator Int Int [Packet] deriving Show
 
 hex2bin :: String -> String

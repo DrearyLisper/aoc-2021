@@ -1,0 +1,120 @@
+cabal-version:      2.4
+name:               aoc2021
+version:            0.1.0.0
+
+author:             Dreary Lisper
+maintainer:         drearylisper@gmail.com
+
+executable day01
+    main-is:          Main.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   01
+    default-language: Haskell2010
+
+executable day02
+    main-is:          Main.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   02
+    default-language: Haskell2010
+
+executable day03
+    main-is:          Main.hs
+    build-depends:    containers, base ^>=4.14.3.0
+    hs-source-dirs:   03
+    default-language: Haskell2010
+
+executable day04
+    main-is:          Main.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   04
+    default-language: Haskell2010
+
+executable day05
+    main-is:          Main.hs
+    build-depends:    containers, base ^>=4.14.3.0
+    hs-source-dirs:   05
+    default-language: Haskell2010
+
+executable day06
+    main-is:          Main.hs
+    build-depends:    containers, base ^>=4.14.3.0
+    hs-source-dirs:   06
+    default-language: Haskell2010
+
+executable day07
+    main-is:          Main.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   07
+    default-language: Haskell2010
+
+executable day08
+    main-is:          Main.hs
+    build-depends:    containers, base ^>=4.14.3.0
+    hs-source-dirs:   08
+    default-language: Haskell2010
+
+executable day09
+    main-is:          Main.hs
+    build-depends:    array, containers, base ^>=4.14.3.0
+    hs-source-dirs:   09
+    default-language: Haskell2010
+
+executable day10
+    main-is:          Main.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   10
+    default-language: Haskell2010
+
+executable day11
+    main-is:          Main.hs
+    build-depends:    array, base ^>=4.14.3.0
+    hs-source-dirs:   11
+    default-language: Haskell2010
+
+executable day12
+    main-is:          Main.hs
+    build-depends:    containers, base ^>=4.14.3.0
+    hs-source-dirs:   12
+    default-language: Haskell2010
+
+executable day13
+    main-is:          Main.hs
+    build-depends:    containers, base ^>=4.14.3.0
+    hs-source-dirs:   13
+    default-language: Haskell2010
+
+executable day14
+    main-is:          Main.hs
+    build-depends:    containers, base ^>=4.14.3.0
+    hs-source-dirs:   14
+    default-language: Haskell2010
+
+executable day15
+    main-is:          Main.hs
+    build-depends:    heap, array, containers, base ^>=4.14.3.0
+    hs-source-dirs:   15
+    default-language: Haskell2010
+
+executable day16
+    main-is:          Main.hs
+    build-depends:    containers, base ^>=4.14.3.0
+    hs-source-dirs:   16
+    default-language: Haskell2010
+
+executable day17
+    main-is:          Main.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   17
+    default-language: Haskell2010
+
+executable day18
+    main-is:          Main.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   18
+    default-language: Haskell2010
+
+executable day19
+    main-is:          Main.hs
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   19
+    default-language: Haskell2010
