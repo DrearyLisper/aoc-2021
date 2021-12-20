@@ -209,3 +209,14 @@ Linking main ...
 ./main  21.89s user 0.28s system 99% cpu 22.374 total
 ```
 
+## Day 20: Trench Map
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/20)
+
+``` haskell
+*Main> main 
+5359
+12333
+(23.42 secs, 15,742,432,512 bytes)
+```
+
