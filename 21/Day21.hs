@@ -1,5 +1,7 @@
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
+
 module Day21 where
+
 
 part1 :: String -> Int
 part1 c = 1
