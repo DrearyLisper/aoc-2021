@@ -60,3 +60,5 @@ solve filename = do
   c <- readFile filename
   print $ part1 c
   part2 c
+
+main = solve "input.txt"
