@@ -1,4 +1,4 @@
-module Main where
+module Day07 where
 
 wordsWhen     :: (Char -> Bool) -> String -> [String]
 wordsWhen p s =  case dropWhile p s of
@@ -26,6 +26,3 @@ solve filename = do
   c <- readFile filename
   print $ part1 c
   print $ part2 c
-
-main :: IO ()
-main = solve "input.txt"

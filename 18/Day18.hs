@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 
-module Main where
+module Day18 where
 
 data Number = Value Int | Pair Number Number deriving Show
 
@@ -92,6 +92,3 @@ solve filename = do
   c <- readFile filename
   print $ part1 c
   print $ part2 c
-
-main :: IO ()
-main = solve "input.txt"

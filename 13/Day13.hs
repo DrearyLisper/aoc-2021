@@ -1,4 +1,4 @@
-module Main where
+module Day13 where
 
 import qualified Data.Set as Set
 
@@ -60,6 +60,3 @@ solve filename = do
   c <- readFile filename
   print $ part1 c
   part2 c
-
-main :: IO ()
-main = solve "input.txt"

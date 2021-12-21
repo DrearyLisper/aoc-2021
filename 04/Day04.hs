@@ -1,4 +1,4 @@
-module Main where
+module Day04 where
 
 import Data.List
 
@@ -84,6 +84,3 @@ solve filename = do
   c <- readFile filename
   print $ part1 c
   print $ part2 c
-
-main :: IO ()
-main = solve "input.txt"

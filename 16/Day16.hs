@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 
-module Main where
+module Day16 where
 
 data Packet = Value Int Int Int | Operator Int Int [Packet] deriving Show
 
@@ -93,6 +93,3 @@ solve filename = do
   c <- readFile filename
   print $ part1 c
   print $ part2 c
-
-main :: IO ()
-main = solve "input.txt"

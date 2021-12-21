@@ -1,4 +1,4 @@
-module Main where
+module Day08 where
 
 import Data.List
 import qualified Data.Map as Map
@@ -99,6 +99,3 @@ solve filename = do
   c <- readFile filename
   print $ part1 c
   print $ part2 c
-
-main :: IO ()
-main = solve "input.txt"
