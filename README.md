@@ -6,7 +6,7 @@
 
 See https://adventofcode.com/2021 for problems.
 
-Use ```:l Main.hs``` in ghci to load solution for particular day.
+Use ```:l DayXX.hs``` in ghci to load solution for particular day.
 
 ## Day 01: Sonar Sweep
 
@@ -222,3 +222,13 @@ Linking main ...
 (23.42 secs, 15,742,432,512 bytes)
 ```
 
+## Day 21: Trench Map
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/21)
+
+``` haskell
+*Day21> main 
+918081
+158631174219251
+(145.36 secs, 133,995,506,696 bytes)
+```
