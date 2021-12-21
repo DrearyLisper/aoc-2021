@@ -79,7 +79,8 @@ In the above example, the second board is the last to win, which happens after 1
 Figure out which board will win last. Once it wins, what would its final score be?
 
 ``` haskell
-*Main> main 
+*Day04> main
 33462
 30070
+(0.15 secs, 115,806,776 bytes)
 ```

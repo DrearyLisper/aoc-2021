@@ -73,7 +73,8 @@ Finally, to find the life support rating, multiply the oxygen generator rating (
 Use the binary numbers in your diagnostic report to calculate the oxygen generator rating and CO2 scrubber rating, then multiply them together. What is the life support rating of the submarine? (Be sure to represent your answer in decimal, not binary.)
 
 ``` haskell
-*Main> main
+*Day03> main 
 4118544
 3832770
+(0.03 secs, 13,718,912 bytes)
 ```

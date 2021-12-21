@@ -145,8 +145,8 @@ In the above example, there are 112 different initial velocity values that meet 
 How many distinct initial velocity values cause the probe to be within the target area after any step?
 
 ``` haskell
-*Main> main 
+*Day17> main
 4560
 3344
-(4.15 secs, 3,979,004,480 bytes)
+(4.17 secs, 3,979,006,864 bytes)
 ```

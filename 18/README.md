@@ -208,8 +208,8 @@ The largest magnitude of the sum of any two snailfish numbers in this list is 39
 What is the largest magnitude of any sum of two different snailfish numbers from the homework assignment?
 
 ``` haskell
-*Main> main 
+*Day18> main 
 3691
 4756
-(3.06 secs, 3,557,741,448 bytes)
+(3.02 secs, 3,557,743,832 bytes)
 ```

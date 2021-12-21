@@ -54,7 +54,8 @@ What do you get if you multiply together the sizes of the three largest basins?
 
 
 ``` haskell
-*Main> main 
+*Day09> main
 502
 1330560
+(0.94 secs, 1,179,047,576 bytes)
 ```

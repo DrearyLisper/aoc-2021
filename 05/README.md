@@ -74,7 +74,8 @@ You still need to determine the number of points where at least two lines overla
 Consider all of the lines. At how many points do at least two lines overlap?
 
 ``` haskell
-*Main> main 
+*Day05> main
 7468
 22364
+(0.73 secs, 581,462,992 bytes)
 ```

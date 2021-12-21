@@ -128,7 +128,8 @@ For each entry, determine all of the wire/segment connections and decode the fou
 
 
 ``` haskell
-*Main> main 
+*Day08> main
 294
 Just 973292
+(0.05 secs, 26,149,632 bytes)
 ```

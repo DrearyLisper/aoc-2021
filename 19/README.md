@@ -396,11 +396,8 @@ What is the largest Manhattan distance between any two scanners?
 
 
 ``` haskell
-> ghc -O2 main.hs -o main
-[1 of 1] Compiling Main             ( main.hs, main.o )
-Linking main ...
-> time ./main 
+*Day19> main
 308
 12124
-./main  21.89s user 0.28s system 99% cpu 22.374 total
+(TBD, TBD)
 ```

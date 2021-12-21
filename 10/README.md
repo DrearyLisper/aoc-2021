@@ -107,7 +107,8 @@ Find the completion string for each incomplete line, score the completion string
 
 
 ``` haskell
-*Main> main 
+*Day10> main
 193275
 2429644557
+(0.04 secs, 14,551,416 bytes)
 ```

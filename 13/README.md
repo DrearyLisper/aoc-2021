@@ -132,7 +132,7 @@ Finish folding the transparent paper according to the instructions. The manual s
 What code do you use to activate the infrared thermal imaging camera system?
 
 ``` haskell
-*Main> main 
+*Day13> main 
 695
 ".**....**.****..**..*....*..*.***....**"
 "*..*....*....*.*..*.*....*..*.*..*....*"
@@ -140,4 +140,5 @@ What code do you use to activate the infrared thermal imaging camera system?
 "*.**....*..*...*.**.*....*..*.***.....*"
 "*..*.*..*.*....*..*.*....*..*.*....*..*"
 ".***..**..****..***.****..**..*.....**."
+(0.04 secs, 24,602,352 bytes)
 ```

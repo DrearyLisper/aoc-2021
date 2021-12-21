@@ -131,8 +131,8 @@ For example:
 What do you get if you evaluate the expression represented by your hexadecimal-encoded BITS transmission?
 
 ``` haskell
-*Main> main 
+*Day16> main
 854
 186189840660
-(0.04 secs, 30,072,016 bytes)
+(0.03 secs, 30,075,856 bytes)
 ```

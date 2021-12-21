@@ -163,7 +163,8 @@ The slightly larger example above now has 103 paths through it, and the even lar
 Given these new rules, how many paths through this cave system are there?
 
 ``` haskell
-*Main> main 
+*Day12> main
 4241
 122134
+(17.48 secs, 15,744,407,480 bytes)
 ```

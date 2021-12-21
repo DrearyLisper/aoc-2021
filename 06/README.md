@@ -67,7 +67,8 @@ After 256 days in the example above, there would be a total of 26984457539 lante
 How many lanternfish would there be after 256 days?
 
 ``` haskell
-*Main> main 
+*Day06> main
 343441
 1569108373832
+(0.02 secs, 5,165,872 bytes)
 ```

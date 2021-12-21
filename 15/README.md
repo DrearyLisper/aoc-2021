@@ -172,8 +172,8 @@ The total risk of this path is 315 (the starting position is still never entered
 Using the full map, what is the lowest total risk of any path from the top left to the bottom right?
 
 ``` haskell
-*Main> main 
+*Day15> main 
 472
 2851
-(4.79 secs, 4,591,589,160 bytes)
+(4.61 secs, 4,572,872,264 bytes)
 ```

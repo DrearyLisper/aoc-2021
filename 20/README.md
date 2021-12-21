@@ -127,8 +127,8 @@ If you enhance the starting input image in the above example a total of 50 times
 Start again with the original input image and apply the image enhancement algorithm 50 times. How many pixels are lit in the resulting image?
 
 ``` haskell
-*Main> main 
+*Day20> main
 5359
 12333
-(23.42 secs, 15,742,432,512 bytes)
+(23.66 secs, 15,742,436,472 bytes)
 ```

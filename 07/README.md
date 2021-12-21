@@ -61,7 +61,8 @@ This costs a total of 168 fuel. This is the new cheapest possible outcome; the o
 Determine the horizontal position that the crabs can align to using the least fuel possible so they can make you an escape route! How much fuel must they spend to align to that position?
 
 ``` haskell
-*Main> main 
+*Day07> main
 333755
 94017638
+(1.41 secs, 1,792,182,920 bytes)
 ```

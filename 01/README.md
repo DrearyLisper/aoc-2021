@@ -80,7 +80,8 @@ In this example, there are 5 sums that are larger than the previous sum.
 Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?
 
 ``` haskell
-*Main> main
+*Day01> main
 1393
 1359
+(0.09 secs, 24,340,640 bytes)
 ```
