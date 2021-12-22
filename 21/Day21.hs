@@ -4,9 +4,7 @@ module Day21 where
 
 import qualified Data.Map as Map
 import Data.Maybe (fromMaybe)
-
-import Data.List
-import Debug.Trace
+import Data.List (group, sort)
 
 data Dice = Dice Int Int deriving Show
 
@@ -22,13 +20,13 @@ data Player = Player Int Int deriving (Show, Ord, Eq)
 parsePlayer :: String -> Player
 parsePlayer l = Player 0 (read $ last $ words l)
 
+advance :: Int -> Int -> Int
+advance place moves = ((place + moves - 1) `mod` 10) + 1
+
 data Game = Game Int Bool [Player] Dice deriving Show
 
 newGame :: [Player] -> Game
 newGame players = Game 0 False players newDice
-
-advance :: Int -> Int -> Int
-advance place moves = ((place + moves - 1) `mod` 10) + 1
 
 part1 :: String -> Int
 part1 c = finalScore $ play $ game
@@ -69,7 +67,9 @@ part2 c = let
     game = newGame players
 
     waysToWin :: (Player, Player, Bool) -> (Int, Int)
-    waysToWin state = if who state then (howManyFinished player + waysToWin1, waysToWin2) else (waysToWin1, howManyFinished player + waysToWin2)
+    waysToWin state = if who state
+      then (howManyFinished player + waysToWin1, waysToWin2)
+      else (waysToWin1, howManyFinished player + waysToWin2)
       where
         player = getPlayer state
 
@@ -83,7 +83,9 @@ part2 c = let
     getPlayer (player1, player2, whoPlays) = (if whoPlays then fst else snd) (player1, player2)
 
     replacePlayer :: (Player, Player, Bool) -> Player -> (Player, Player, Bool)
-    replacePlayer (player1, player2, whoPlays) player = if whoPlays then (player, player2, not whoPlays) else (player1, player, not whoPlays)
+    replacePlayer (player1, player2, whoPlays) player = if whoPlays
+      then (player, player2, not whoPlays)
+      else (player1, player, not whoPlays)
 
     who :: (Player, Player, Bool) -> Bool
     who (_, _, b) = b
