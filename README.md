@@ -254,3 +254,14 @@ Just 973292
 1213461324555691
 (3.07 secs, 4,548,786,096 bytes)
 ```
+
+## Day 23: Reactor Reboot
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/23)
+
+``` haskell
+*Day23> main 
+15358
+51436
+(TBD, TBD)
+```
