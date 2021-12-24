@@ -3,13 +3,6 @@
 module Day24 where
 
 import Debug.Trace
-import GHC.Stack (popCallStack)
-
-wordsWhen     :: (Char -> Bool) -> String -> [String]
-wordsWhen p s =  case dropWhile p s of
-                      "" -> []
-                      s' -> w : wordsWhen p s''
-                            where (w, s'') = break p s'
 
 data Arg = RegisterW | RegisterX | RegisterY | RegisterZ | Value Int deriving Show
 data Opcode = Inp Arg | Add Arg Arg | Mul Arg Arg | Div Arg Arg | Mod Arg Arg | Eql Arg Arg deriving Show
