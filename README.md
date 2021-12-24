@@ -255,7 +255,7 @@ Just 973292
 (3.07 secs, 4,548,786,096 bytes)
 ```
 
-## Day 23: Reactor Reboot
+## Day 23: Amphipod
 
 [Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/23)
 
@@ -264,4 +264,15 @@ Just 973292
 15358
 51436
 (TBD, TBD)
+```
+
+## Day 24: Arithmetic Logic Unit
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/24)
+
+``` haskell
+*Day24> main 
+99291593199892
+73181221197111
+(0.01 secs, 855,960 bytes)
 ```
