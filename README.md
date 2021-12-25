@@ -276,3 +276,14 @@ Just 973292
 73181221197111
 (0.01 secs, 855,960 bytes)
 ```
+
+## Day 25: Sea Cucumber
+
+[Full Description](https://github.com/DrearyLisper/aoc-2021/tree/master/25)
+
+``` haskell
+*Day25> main 
+523
+"Merry Christmas and Happy New Year!"
+(36.81 secs, 26,040,310,880 bytes)
+```
