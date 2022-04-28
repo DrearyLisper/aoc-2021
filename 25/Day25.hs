@@ -35,7 +35,8 @@ south (grid, b) (x, y) | 'v' == get grid (x, y) && '.' == get grid (x + 1, y) = 
 
 moveEast :: Grid -> (Grid, Bool)
 moveEast (Grid height width m) = let
-                                  (Grid _ _ newM, updated) = foldl east (Grid height width m, False) [(i, j) | j <- reverse [0..width-1], i <- [0..height-1]]
+                                  (Grid _ _ newM, updated) = foldl east (Grid height width m, False)
+                                                             [(i, j) | j <- reverse [0..width-1], i <- [0..height-1]]
                                  in (Grid height width (Map.map (\x -> case x of
                                                  '>' -> '>'
                                                  'Z' -> '>'
@@ -45,7 +46,8 @@ moveEast (Grid height width m) = let
 
 moveSouth :: Grid -> (Grid, Bool)
 moveSouth (Grid height width m) = let
-                                  (Grid _ _ newM, updated) = foldl south (Grid height width m, False) [(i, j) | j <- [0..width-1], i <- reverse [0..height-1]]
+                                  (Grid _ _ newM, updated) = foldl south (Grid height width m, False)
+                                                             [(i, j) | j <- [0..width-1], i <- reverse [0..height-1]]
                                  in (Grid height width (Map.map (\x -> case x of
                                                  '>' -> '>'
                                                  'Z' -> 'v'
